@@ -1,0 +1,81 @@
+TRACE TABLE
+===========
+
+PART A - LEVEL ORDER TRAVERSAL
+
+Queue Processing:
+
+Step 1:
+Visit CEO
+Queue: HR, Finance, IT
+
+Step 2:
+Visit HR
+Queue: Finance, IT
+
+Step 3:
+Visit Finance
+Queue: IT
+
+Step 4:
+Visit IT
+Queue: Development, Testing
+
+Step 5:
+Visit Development
+Queue: Testing, Frontend, Backend
+
+Step 6:
+Visit Testing
+Queue: Frontend, Backend
+
+Step 7:
+Visit Frontend
+Queue: Backend
+
+Step 8:
+Visit Backend
+Queue: Empty
+
+
+Level Order Result:
+CEO HR Finance IT Development Testing Frontend Backend
+
+
+PART B - SEARCH TRACE
+
+Sorted Department List:
+Backend, Development, Finance, Frontend, HR, IT, Testing
+
+
+1. Search for Development
+
+Linear Search:
+Backend -> Development
+Comparisons = 2
+
+Binary Search:
+Frontend -> Development
+Comparisons = 2
+
+
+2. Search for HR
+
+Linear Search:
+Backend -> Development -> Finance -> Frontend -> HR
+Comparisons = 5
+
+Binary Search:
+Frontend -> IT -> HR
+Comparisons = 3
+
+
+3. Search for Testing
+
+Linear Search:
+Backend -> Development -> Finance -> Frontend -> HR -> IT -> Testing
+Comparisons = 7
+
+Binary Search:
+Frontend -> IT -> Testing
+Comparisons = 3
