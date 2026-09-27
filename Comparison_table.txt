@@ -1,0 +1,46 @@
+SEARCH METHOD COMPARISON
+========================
+
+| Feature              | Linear Search | Binary Search |
+|----------------------|---------------|---------------|
+| Sorted data required | No            | Yes           |
+| Search method        | Sequential    | Divide and Conquer |
+| Best case            | O(1)          | O(1)          |
+| Average case         | O(n)          | O(log n)      |
+| Worst case           | O(n)          | O(log n)      |
+| Extra space          | O(1)          | O(1)          |
+
+
+OBSERVED COMPARISONS
+====================
+
+| Department  | Linear Search | Binary Search |
+|-------------|---------------|---------------|
+| Development | 2             | 2             |
+| HR          | 5             | 3             |
+| Testing     | 7             | 3             |
+
+
+TREE ANALYSIS
+=============
+
+Number of nodes = 8
+Tree height = 3 edges
+Number of levels = 4
+
+Level-order traversal uses a queue.
+
+Traversal order:
+CEO HR Finance IT Development Testing Frontend Backend
+
+
+SUMMARY
+=======
+
+Linear Search can be used with unsorted data.
+
+Binary Search requires sorted data and generally needs
+fewer comparisons for large datasets.
+
+For the given sorted department list, Binary Search gives
+fewer comparisons for HR and Testing.
