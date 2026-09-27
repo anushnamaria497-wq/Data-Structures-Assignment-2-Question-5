@@ -1,0 +1,30 @@
+CONCLUSION
+==========
+
+The organisational hierarchy was successfully represented
+using a general tree structure.
+
+The hierarchy contains the CEO, HR, Finance and IT departments.
+The IT department contains Development and Testing, while
+Development contains Frontend and Backend.
+
+Level-order traversal was used to display the hierarchy
+level by level.
+
+Linear Search and Binary Search were implemented to locate
+department names.
+
+From the execution results, Linear Search required more
+comparisons for HR and Testing, while Binary Search required
+fewer comparisons.
+
+Linear Search does not require sorted data, whereas Binary
+Search requires the data to be sorted.
+
+Therefore, Binary Search is suitable when department names
+are maintained in sorted order, especially when the number
+of departments becomes large.
+
+The tree representation is suitable for organisational
+reporting because it clearly shows the relationship between
+the different departments and sub-departments.
