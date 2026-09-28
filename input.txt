@@ -1,32 +1,8 @@
-DATA STRUCTURES AND ALGORITHMS
-ASSIGNMENT 2 - QUESTION 5
-
-Organisational Hierarchy:
-
-CEO
-HR
-Finance
-IT
-Development
-Testing
-Frontend
-Backend
-
-Hierarchy:
+Organisational hierarchy:
 CEO -> HR, Finance, IT
 IT -> Development, Testing
 Development -> Frontend, Backend
 
-Departments used for searching:
-Backend
-Development
-Finance
-Frontend
-HR
-IT
-Testing
+Departments (8): CEO, HR, Finance, IT, Development, Testing, Frontend, Backend
 
-Search keys:
-Development
-HR
-Testing
+Search keys: Testing, Frontend, HR, Marketing (Marketing is not in the company)

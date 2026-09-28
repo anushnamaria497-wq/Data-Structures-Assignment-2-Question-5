@@ -1,32 +1,30 @@
-DATA STRUCTURES AND ALGORITHMS
-ASSIGNMENT 2 - QUESTION 5
+Organisational Hierarchy Tree constructed.
+Total departments (nodes): 8
+Tree height (root = level 0): 3
 
-Organisational Hierarchy:
-CEO
-|-- HR
-|-- Finance
-|-- IT
-    |-- Development
-        |-- Frontend
-        |-- Backend
-    |-- Testing
+--- Level Order (BFS) Traversal ---
+Level 0: CEO 
+Level 1: HR Finance IT 
+Level 2: Development Testing 
+Level 3: Frontend Backend 
 
-Level Order Traversal:
-CEO HR Finance IT Development Testing Frontend Backend
-
-Sorted Department List:
-Backend Development Finance Frontend HR IT Testing
+Original list : CEO HR Finance IT Development Testing Frontend Backend 
+Sorted list   : Backend CEO Development Finance Frontend HR IT Testing 
 
 Search Results:
 
-Department: Development
+Department: Testing (present)
+Linear Search Comparisons: 6
+Binary Search Comparisons: 4
+
+Department: Frontend (present)
+Linear Search Comparisons: 7
+Binary Search Comparisons: 3
+
+Department: HR (present)
 Linear Search Comparisons: 2
 Binary Search Comparisons: 2
 
-Department: HR
-Linear Search Comparisons: 5
-Binary Search Comparisons: 3
-
-Department: Testing
-Linear Search Comparisons: 7
-Binary Search Comparisons: 3
+Department: Marketing (not present)
+Linear Search Comparisons: 8
+Binary Search Comparisons: 4

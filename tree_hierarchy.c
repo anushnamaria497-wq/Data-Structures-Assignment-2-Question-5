@@ -1,97 +1,108 @@
+/* ============================================================
+   Q5(a): Organisational Hierarchy represented as a General Tree
+   Construction + Level Order (BFS) Traversal
+   ============================================================ */
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
 
-struct Node
-{
-    char name[20];
-    struct Node *child1;
-    struct Node *child2;
-    struct Node *child3;
-};
+#define MAX_CHILDREN 10
+#define MAX_NAME 30
 
-struct Node* createNode(char name[])
-{
-    struct Node *newNode;
+typedef struct Node {
+    char name[MAX_NAME];
+    struct Node* children[MAX_CHILDREN];
+    int childCount;
+} Node;
 
-    newNode = (struct Node*)malloc(sizeof(struct Node));
-
-    strcpy(newNode->name, name);
-
-    newNode->child1 = NULL;
-    newNode->child2 = NULL;
-    newNode->child3 = NULL;
-
-    return newNode;
+Node* createNode(const char* name) {
+    Node* n = (Node*)malloc(sizeof(Node));
+    strcpy(n->name, name);
+    n->childCount = 0;
+    return n;
 }
 
-void levelOrder(struct Node *root)
-{
-    struct Node *queue[20];
-    int front = 0;
-    int rear = 0;
+void addChild(Node* parent, Node* child) {
+    parent->children[parent->childCount++] = child;
+}
 
-    queue[rear++] = root;
+/* Simple array based queue for BFS */
+typedef struct {
+    Node* items[100];
+    int front, rear;
+} Queue;
 
-    while (front < rear)
-    {
-        struct Node *temp = queue[front++];
+void initQueue(Queue* q) { q->front = 0; q->rear = 0; }
+int isEmpty(Queue* q) { return q->front == q->rear; }
+void enqueue(Queue* q, Node* n) { q->items[q->rear++] = n; }
+Node* dequeue(Queue* q) { return q->items[q->front++]; }
 
-        printf("%s ", temp->name);
+void levelOrderTraversal(Node* root) {
+    Queue q;
+    initQueue(&q);
+    enqueue(&q, root);
+    int level = 0;
 
-        if (temp->child1 != NULL)
-            queue[rear++] = temp->child1;
-
-        if (temp->child2 != NULL)
-            queue[rear++] = temp->child2;
-
-        if (temp->child3 != NULL)
-            queue[rear++] = temp->child3;
+    printf("\n--- Level Order (BFS) Traversal ---\n");
+    while (!isEmpty(&q)) {
+        int levelSize = q.rear - q.front;   /* nodes at current level */
+        printf("Level %d: ", level);
+        for (int i = 0; i < levelSize; i++) {
+            Node* cur = dequeue(&q);
+            printf("%s ", cur->name);
+            for (int j = 0; j < cur->childCount; j++)
+                enqueue(&q, cur->children[j]);
+        }
+        printf("\n");
+        level++;
     }
 }
 
-int main()
-{
-    struct Node *CEO;
-    struct Node *HR;
-    struct Node *Finance;
-    struct Node *IT;
-    struct Node *Development;
-    struct Node *Testing;
-    struct Node *Frontend;
-    struct Node *Backend;
+int treeHeight(Node* root) {
+    if (root == NULL || root->childCount == 0) return 0;
+    int maxH = 0;
+    for (int i = 0; i < root->childCount; i++) {
+        int h = treeHeight(root->children[i]);
+        if (h > maxH) maxH = h;
+    }
+    return maxH + 1;
+}
 
-    CEO = createNode("CEO");
-    HR = createNode("HR");
-    Finance = createNode("Finance");
-    IT = createNode("IT");
-    Development = createNode("Development");
-    Testing = createNode("Testing");
-    Frontend = createNode("Frontend");
-    Backend = createNode("Backend");
+int countNodes(Node* root) {
+    int count = 1;
+    for (int i = 0; i < root->childCount; i++)
+        count += countNodes(root->children[i]);
+    return count;
+}
 
-    CEO->child1 = HR;
-    CEO->child2 = Finance;
-    CEO->child3 = IT;
+int main() {
+    /* Build hierarchy:
+       CEO -> HR, Finance, IT
+       IT -> Development, Testing
+       Development -> Frontend, Backend
+    */
+    Node* CEO = createNode("CEO");
+    Node* HR = createNode("HR");
+    Node* Finance = createNode("Finance");
+    Node* IT = createNode("IT");
+    Node* Development = createNode("Development");
+    Node* Testing = createNode("Testing");
+    Node* Frontend = createNode("Frontend");
+    Node* Backend = createNode("Backend");
 
-    IT->child1 = Development;
-    IT->child2 = Testing;
+    addChild(CEO, HR);
+    addChild(CEO, Finance);
+    addChild(CEO, IT);
+    addChild(IT, Development);
+    addChild(IT, Testing);
+    addChild(Development, Frontend);
+    addChild(Development, Backend);
 
-    Development->child1 = Frontend;
-    Development->child2 = Backend;
+    printf("Organisational Hierarchy Tree constructed.\n");
+    printf("Total departments (nodes): %d\n", countNodes(CEO));
+    printf("Tree height (root = level 0): %d\n", treeHeight(CEO));
 
-    printf("Organisational Hierarchy:\n");
-    printf("CEO\n");
-    printf("|-- HR\n");
-    printf("|-- Finance\n");
-    printf("|-- IT\n");
-    printf("    |-- Development\n");
-    printf("        |-- Frontend\n");
-    printf("        |-- Backend\n");
-    printf("    |-- Testing\n");
-
-    printf("\nLevel Order Traversal:\n");
-    levelOrder(CEO);
+    levelOrderTraversal(CEO);
 
     return 0;
 }

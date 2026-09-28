@@ -1,17 +1,14 @@
 # Data Structures Assignment 2 - Question 5
 
 ## Topic
-
 Organisational Hierarchy and Department Searching
 
 ## Description
+A company hierarchy is represented as a general tree and traversed level by level.
+Linear Search and Binary Search are compared for locating department names (n = 8,
+including CEO).
 
-This project represents a company organisational hierarchy
-using a general tree and compares Linear Search and Binary
-Search for locating department names.
-
-## Organisational Hierarchy
-
+## Hierarchy
 CEO
 - HR
 - Finance
@@ -21,50 +18,33 @@ CEO
     - Backend
   - Testing
 
-## Contents
+## Files
+- `tree_hierarchy.c` - tree construction and level-order traversal
+- `searching.c` - Linear Search vs Binary Search (comparison counts)
+- `input.txt` - input data
+- `output.txt` - program output
+- `Trace_table.txt` - intermediate steps
+- `Complexity_analysis.txt` - time and space complexity
+- `Comparison_table.txt` - search method comparison
+- `Conclusion.txt` - final conclusion
 
-- `tree_hierarchy.c` - Tree construction and level-order traversal
-- `searching.c` - Linear Search and Binary Search
-- `Input.txt` - Input data
-- `Output.txt` - Program output
-- `Trace_table.txt` - Important intermediate steps
-- `Complexity_analysis.txt` - Time and space complexity
-- `Comparison_table.txt` - Search method comparison
-- `Conclusion.txt` - Final conclusion
+## How to run
+```
+gcc tree_hierarchy.c -o tree && ./tree
+gcc searching.c -o search && ./search
+```
 
-## Level Order Traversal
-
+## Level-order traversal
 CEO HR Finance IT Development Testing Frontend Backend
 
-## Search Methods
-
-The project compares:
-
-1. Linear Search
-2. Binary Search
-
-The department names are arranged in sorted order for
-Binary Search.
-
-## Complexity
-
-### Linear Search
-
-Worst-case time complexity: O(n)
-
-### Binary Search
-
-Worst-case time complexity: O(log n)
-
-### Level-order Traversal
-
-Time complexity: O(n)
+## Search results (comparisons)
+| Key | Linear | Binary |
+|---|---|---|
+| Testing | 6 | 4 |
+| Frontend | 7 | 3 |
+| HR | 2 | 2 |
+| Marketing (absent) | 8 | 4 |
 
 ## Conclusion
-
-The tree structure is suitable for representing the
-organisational hierarchy.
-
-Binary Search requires sorted data but can reduce the
-number of comparisons compared with Linear Search for
-larger datasets.
+Binary Search needs sorted data but uses far fewer comparisons as the number of
+departments grows (O(log n) vs O(n)).

@@ -1,46 +1,10 @@
-SEARCH METHOD COMPARISON
-========================
+COMPARISON: Linear Search vs Binary Search (n = 8)
 
-| Feature              | Linear Search | Binary Search |
-|----------------------|---------------|---------------|
-| Sorted data required | No            | Yes           |
-| Search method        | Sequential    | Divide and Conquer |
-| Best case            | O(1)          | O(1)          |
-| Average case         | O(n)          | O(log n)      |
-| Worst case           | O(n)          | O(log n)      |
-| Extra space          | O(1)          | O(1)          |
-
-
-OBSERVED COMPARISONS
-====================
-
-| Department  | Linear Search | Binary Search |
-|-------------|---------------|---------------|
-| Development | 2             | 2             |
-| HR          | 5             | 3             |
-| Testing     | 7             | 3             |
-
-
-TREE ANALYSIS
-=============
-
-Number of nodes = 8
-Tree height = 3 edges
-Number of levels = 4
-
-Level-order traversal uses a queue.
-
-Traversal order:
-CEO HR Finance IT Development Testing Frontend Backend
-
-
-SUMMARY
-=======
-
-Linear Search can be used with unsorted data.
-
-Binary Search requires sorted data and generally needs
-fewer comparisons for large datasets.
-
-For the given sorted department list, Binary Search gives
-fewer comparisons for HR and Testing.
+Criterion              | Linear Search                  | Binary Search
+Pre-condition          | None                           | Data must be sorted
+Time complexity        | O(n)                           | O(log n)
+Comparisons observed   | Testing 6, Frontend 7, HR 2,   | Testing 4, Frontend 3, HR 2,
+                       | Marketing (absent) 8           | Marketing (absent) 4
+Extra cost             | None                           | Sorting once: O(n log n)
+Space                  | O(1)                           | O(1)
+Best when              | Small / unsorted / changing    | Large, mostly static, kept sorted

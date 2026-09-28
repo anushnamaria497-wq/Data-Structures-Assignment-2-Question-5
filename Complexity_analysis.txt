@@ -1,69 +1,15 @@
-COMPLEXITY ANALYSIS
-===================
+COMPLEXITY ANALYSIS  (n = number of departments)
 
-1. TREE STRUCTURE
+Tree height: 3 (root CEO at level 0; Frontend and Backend at level 3). 8 nodes.
+The tree is irregular: CEO has 3 children, IT and Development have 2, the rest are leaves.
 
-Number of nodes = 8
+Operation                    | Best   | Average | Worst  | Space
+Tree construction            | O(1)/node | O(1)/node | O(1)/node | O(n)
+Level-order traversal (BFS)  | O(n)   | O(n)    | O(n)   | O(n) queue
+Linear Search                | O(1)   | O(n)    | O(n)   | O(1)
+Binary Search (sorted array) | O(1)   | O(log n)| O(log n)| O(1)
+Sorting for Binary Search    | -      | -       | O(n log n) (one-time; Bubble Sort used here is O(n^2))
 
-Tree height = 3 edges
-
-Number of levels = 4
-
-Tree storage:
-Time/Space = O(n)
-
-Level-order traversal:
-Time Complexity = O(n)
-
-Auxiliary Space:
-O(n), because a queue is used.
-
-
-2. LINEAR SEARCH
-
-Linear Search checks the elements one by one.
-
-Best Case Time Complexity = O(1)
-
-Worst Case Time Complexity = O(n)
-
-Average Case Time Complexity = O(n)
-
-Extra Space Complexity = O(1)
-
-
-3. BINARY SEARCH
-
-Binary Search works on sorted data and divides the search
-range into smaller parts.
-
-Best Case Time Complexity = O(1)
-
-Worst Case Time Complexity = O(log n)
-
-Average Case Time Complexity = O(log n)
-
-Extra Space Complexity = O(1)
-
-
-4. TREE HEIGHT ANALYSIS
-
-The longest path is:
-
-CEO -> IT -> Development -> Frontend
-
-Therefore:
-
-Height = 3 edges
-Levels = 4
-
-
-5. OVERALL ANALYSIS
-
-The organisational hierarchy is represented using a tree.
-Level-order traversal displays the hierarchy level by level.
-
-Linear Search is simple and does not require sorted data.
-
-Binary Search requires sorted data but reduces the number
-of comparisons for larger datasets.
+Observed: Linear Search needed 2-8 comparisons; Binary Search needed 2-4
+(theoretical maximum floor(log2 8) + 1 = 4). Absent key "Marketing" is the
+worst case for both: 8 vs 4 comparisons.
