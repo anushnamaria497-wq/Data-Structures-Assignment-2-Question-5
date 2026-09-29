@@ -4,9 +4,20 @@
 Organisational Hierarchy and Department Searching
 
 ## Description
-A company hierarchy is represented as a general tree and traversed level by level.
-Linear Search and Binary Search are compared for locating department names (n = 8,
-including CEO).
+A company hierarchy is represented as a general tree and traversed level by level. Linear Search and Binary Search are compared for locating department names.).
+## Index
+
+| Sl. No. | Contents |
+|--------:|----------|
+| 1 | Organisational Hierarchy |
+| 2 | Tree Construction and Level-Order Traversal |
+| 3 | Department Searching |
+| 4 | Linear Search |
+| 5 | Binary Search |
+| 6 | Trace Table |
+| 7 | Time and Space Complexity Analysis |
+| 8 | Comparison of Linear Search and Binary Search |
+| 9 | Conclusion |
 
 ## Hierarchy
 CEO
@@ -38,12 +49,13 @@ gcc searching.c -o search && ./search
 CEO HR Finance IT Development Testing Frontend Backend
 
 ## Search results (comparisons)
+## Search Results (Comparisons)
+
 | Key | Linear | Binary |
-|---|---|---|
-| Testing | 6 | 4 |
-| Frontend | 7 | 3 |
-| HR | 2 | 2 |
-| Marketing (absent) | 8 | 4 |
+|---|---:|---:|
+| Development | 2 | 2 |
+| HR | 5 | 3 |
+| Testing | 7 | 3 |
 
 ## Conclusion
 Binary Search needs sorted data but uses far fewer comparisons as the number of
