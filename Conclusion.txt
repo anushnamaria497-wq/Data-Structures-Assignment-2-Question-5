@@ -1,15 +1,36 @@
 CONCLUSION
+==========
 
-A general (n-ary) tree is a suitable representation of the organisational
-hierarchy. Level-order traversal lists departments by reporting level
-(CEO -> HR, Finance, IT -> Development, Testing -> Frontend, Backend) in O(n) time.
+The company organisational hierarchy was successfully
+represented using a general tree structure.
 
-For locating a department, Binary Search used fewer comparisons than Linear Search
-in most cases (Frontend 3 vs 7, Testing 4 vs 6, Marketing 4 vs 8). For HR both
-needed 2, because HR is near the front of the original list. As the number of
-departments grows, Binary Search's O(log n) advantage increases over Linear
-Search's O(n). Binary Search needs sorted data (one-time O(n log n) cost).
+The hierarchy contains 8 tree nodes including the CEO
+and 7 departments.
 
-Therefore, for organisational reporting and department searching, the tree suits
-the hierarchy and a sorted array with Binary Search is the more suitable search
-method when the department list changes rarely.
+Level-order traversal was used to display the hierarchy
+level by level.
+
+The traversal order is:
+
+CEO HR Finance IT Development Testing Frontend Backend
+
+Linear Search and Binary Search were implemented to
+locate department names.
+
+For the three searches performed, the comparison counts
+were:
+
+Development: Linear = 2, Binary = 2
+HR: Linear = 5, Binary = 3
+Testing: Linear = 7, Binary = 3
+
+Binary Search requires the department names to be sorted,
+while Linear Search does not require sorted data.
+
+The tree representation is suitable for organisational
+reporting because it clearly shows the relationships
+between departments and sub-departments.
+
+A sorted array with Binary Search is suitable for
+department searching, particularly when the department
+list is maintained in sorted order.
