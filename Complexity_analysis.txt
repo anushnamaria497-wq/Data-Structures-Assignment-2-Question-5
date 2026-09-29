@@ -1,15 +1,102 @@
-COMPLEXITY ANALYSIS  (n = number of departments)
+COMPLEXITY ANALYSIS
+===================
 
-Tree height: 3 (root CEO at level 0; Frontend and Backend at level 3). 8 nodes.
-The tree is irregular: CEO has 3 children, IT and Development have 2, the rest are leaves.
+1. TREE STRUCTURE
 
-Operation                    | Best   | Average | Worst  | Space
-Tree construction            | O(1)/node | O(1)/node | O(1)/node | O(n)
-Level-order traversal (BFS)  | O(n)   | O(n)    | O(n)   | O(n) queue
-Linear Search                | O(1)   | O(n)    | O(n)   | O(1)
-Binary Search (sorted array) | O(1)   | O(log n)| O(log n)| O(1)
-Sorting for Binary Search    | -      | -       | O(n log n) (one-time; Bubble Sort used here is O(n^2))
+Number of departments = 7
+Number of tree nodes = 8
 
-Observed: Linear Search needed 2-8 comparisons; Binary Search needed 2-4
-(theoretical maximum floor(log2 8) + 1 = 4). Absent key "Marketing" is the
-worst case for both: 8 vs 4 comparisons.
+Tree height = 3 edges
+
+Number of levels = 4
+
+The longest path is:
+
+CEO -> IT -> Development -> Frontend
+
+Tree storage:
+Space Complexity = O(n)
+
+Tree construction:
+Time Complexity = O(n)
+
+
+2. LEVEL-ORDER TRAVERSAL
+
+Level-order traversal visits the nodes level by level
+using a queue.
+
+Traversal order:
+
+CEO HR Finance IT Development Testing Frontend Backend
+
+Time Complexity = O(n)
+
+Auxiliary Space Complexity = O(n)
+
+
+3. LINEAR SEARCH
+
+Linear Search checks the department names one by one.
+
+Best Case Time Complexity = O(1)
+
+Average Case Time Complexity = O(n)
+
+Worst Case Time Complexity = O(n)
+
+Extra Space Complexity = O(1)
+
+
+4. BINARY SEARCH
+
+Binary Search works on sorted department names and
+reduces the search range by half in each step.
+
+Best Case Time Complexity = O(1)
+
+Average Case Time Complexity = O(log n)
+
+Worst Case Time Complexity = O(log n)
+
+Extra Space Complexity = O(1)
+
+
+5. SEARCH COMPARISON
+
+Sorted Department List:
+
+Backend, Development, Finance, Frontend, HR, IT, Testing
+
+Observed comparisons:
+
+Development:
+Linear Search = 2
+Binary Search = 2
+
+HR:
+Linear Search = 5
+Binary Search = 3
+
+Testing:
+Linear Search = 7
+Binary Search = 3
+
+
+6. OVERALL ANALYSIS
+
+The tree structure represents the organisational
+hierarchy clearly.
+
+Level-order traversal displays the hierarchy level
+by level.
+
+Linear Search does not require sorted data.
+
+Binary Search requires sorted data but generally
+requires fewer comparisons for larger datasets.
+
+Therefore, a tree is suitable for organisational
+reporting, while a sorted array with Binary Search
+is suitable for department searching when the data
+is maintained in sorted order.
