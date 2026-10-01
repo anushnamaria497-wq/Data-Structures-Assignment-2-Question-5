@@ -1,187 +1,32 @@
-TRACE TABLE
-===========
-
-TRACE TABLE 1: LEVEL-ORDER TRAVERSAL
-====================================
-
-Queue Processing:
-
-Step 1:
-Visit CEO
-Queue: HR, Finance, IT
-
-Step 2:
-Visit HR
-Queue: Finance, IT
-
-Step 3:
-Visit Finance
-Queue: IT
-
-Step 4:
-Visit IT
-Queue: Development, Testing
-
-Step 5:
-Visit Development
-Queue: Testing, Frontend, Backend
-
-Step 6:
-Visit Testing
-Queue: Frontend, Backend
-
-Step 7:
-Visit Frontend
-Queue: Backend
-
-Step 8:
-Visit Backend
-Queue: Empty
-
-
-Final Level-Order Traversal:
-CEO HR Finance IT Development Testing Frontend Backend
-
-Levels:
-Level 0: CEO
-Level 1: HR, Finance, IT
-Level 2: Development, Testing
-Level 3: Frontend, Backend
-
-
-TRACE TABLE 2: SEARCH COMPARISONS
-================================
-
-Sorted Department List:
-
-Backend, Development, Finance, Frontend, HR, IT, Testing
-
-
-1. Search for Development
-
-Linear Search:
-
-Step 1: Backend -> Not Found
-Step 2: Development -> Found
-
-Comparisons = 2
-
-
-Binary Search:
-
-Step 1: Frontend -> Development is smaller, search left
-Step 2: Development -> Found
-
-Comparisons = 2
-
-
-2. Search for HR
-
-Linear Search:
-
-Step 1: Backend -> Not Found
-Step 2: Development -> Not Found
-Step 3: Finance -> Not Found
-Step 4: Frontend -> Not Found
-Step 5: HR -> Found
-
-Comparisons = 5
-
-
-Binary Search:
-
-Step 1: Frontend -> HR is greater, search right
-Step 2: IT -> HR is smaller, search left
-Step 3: HR -> Found
-
-Comparisons = 3
-
-
-3. Search for Testing
-
-Linear Search:
-
-Step 1: Backend -> Not Found
-Step 2: Development -> Not Found
-Step 3: Finance -> Not Found
-Step 4: Frontend -> Not Found
-Step 5: HR -> Not Found
-Step 6: IT -> Not Found
-Step 7: Testing -> Found
-
-Comparisons = 7
-
-
-Binary Search:
-
-Step 1: Frontend -> Testing is greater, search right
-Step 2: IT -> Testing is greater, search right
-Step 3: Testing -> Found
-
-Comparisons = 3
-
-
-TRACE TABLE 3: BINARY SEARCH FOR "TESTING"
-==========================================
-
-Sorted Department List:
-
-Index:
-0 = Backend
-1 = Development
-2 = Finance
-3 = Frontend
-4 = HR
-5 = IT
-6 = Testing
-
-
-Step 1:
-Low = 0
-High = 6
-Mid = 3
-arr[Mid] = Frontend
-
-Decision:
-Testing > Frontend
-Search right half.
-
-
-Step 2:
-Low = 4
-High = 6
-Mid = 5
-arr[Mid] = IT
-
-Decision:
-Testing > IT
-Search right half.
-
-
-Step 3:
-Low = 6
-High = 6
-Mid = 6
-arr[Mid] = Testing
-
-Decision:
-Testing found.
-
-
-Total Binary Search Comparisons = 3
-
-
-FINAL SEARCH COMPARISON TABLE
-=============================
-
-| Department  | Linear Search | Binary Search |
-|-------------|---------------|---------------|
-| Development | 2             | 2             |
-| HR          | 5             | 3             |
-| Testing     | 7             | 3             |
-
-
-FINAL LEVEL-ORDER RESULT
-========================
-
-CEO HR Finance IT Development Testing Frontend Backend
+TRACE TABLE 1: Level-Order (BFS) Traversal  (queue: front -> rear)
+------------------------------------------------------------------------------------------
+Step | Dequeued    | Children enqueued     | Queue after                     | Output so far
+1    | -           | CEO (start)           | [CEO]                           | -
+2    | CEO         | HR, Finance, IT       | [HR, Finance, IT]               | CEO
+3    | HR          | none                  | [Finance, IT]                   | CEO HR
+4    | Finance     | none                  | [IT]                            | CEO HR Finance
+5    | IT          | Development, Testing  | [Development, Testing]          | CEO HR Finance IT
+6    | Development | Frontend, Backend     | [Testing, Frontend, Backend]    | ... Development
+7    | Testing     | none                  | [Frontend, Backend]             | ... Testing
+8    | Frontend    | none                  | [Backend]                       | ... Frontend
+9    | Backend     | none                  | []                              | ... Backend
+
+Final order: CEO HR Finance IT Development Testing Frontend Backend
+Levels: L0 CEO | L1 HR Finance IT | L2 Development Testing | L3 Frontend Backend
+
+TRACE TABLE 2: Search comparisons (n = 8)
+Original list (Linear): CEO HR Finance IT Development Testing Frontend Backend
+Sorted list (Binary)  : Backend CEO Development Finance Frontend HR IT Testing
+------------------------------------------------------------------------------
+Key       | Present | Linear comparisons | Binary comparisons
+Testing   | Yes     | 6                  | 4
+Frontend  | Yes     | 7                  | 3
+HR        | Yes     | 2                  | 2
+Marketing | No      | 8                  | 4
+
+TRACE TABLE 3: Binary Search for "Testing" (indices 0-7)
+Iter | low | high | mid | arr[mid] | Decision
+1    | 0   | 7    | 3   | Finance  | Testing > Finance -> go right
+2    | 4   | 7    | 5   | HR       | Testing > HR      -> go right
+3    | 6   | 7    | 6   | IT       | Testing > IT      -> go right
+4    | 7   | 7    | 7   | Testing  | Found

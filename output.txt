@@ -3,13 +3,13 @@ Total departments (nodes): 8
 Tree height (root = level 0): 3
 
 --- Level Order (BFS) Traversal ---
-Level 0: CEO
-Level 1: HR Finance IT
-Level 2: Development Testing
-Level 3: Frontend Backend
+Level 0: CEO 
+Level 1: HR Finance IT 
+Level 2: Development Testing 
+Level 3: Frontend Backend 
 
-Original list : CEO HR Finance IT Development Testing Frontend Backend
-Sorted list   : Backend CEO Development Finance Frontend HR IT Testing
+Original list : CEO HR Finance IT Development Testing Frontend Backend 
+Sorted list   : Backend CEO Development Finance Frontend HR IT Testing 
 
 Search Results:
 
